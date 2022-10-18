@@ -1,6 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts"
-import { Neis } from "https://deno.land/x/neis@1.0.1/mod.ts"
-const neis = new Neis({})
+import { getSchoolInfo } from "./data/getSchoolInfo.ts"
+import { getSchoolMeal } from "./data/GetSchoolMeal.ts"
 
 const app = new Application()
 const router = new Router()
@@ -9,18 +9,19 @@ const port = 8000
 router
   .get("/",(ctx) => {
     ctx.response.body = "SIF Backend API, Made with Neis API.";
-   })
+  })
 
   .get("/api/info/:school", async (ctx) => {
+    const school_name = ctx.params.school
+    
+    ctx.response.body = await getSchoolInfo(school_name)
+  })
 
+  .get("/api/meal/:school", async (ctx) => {
     const school_name = ctx.params.school
 
-    const school = await neis.getSchoolInfo({
-      SCHUL_NM: school_name
-    })
-    
-    ctx.response.body = school
-   });
+    ctx.response.body = await getSchoolMeal(school_name)
+  })
 
 app.use(router.routes())
 app.use(router.allowedMethods())
