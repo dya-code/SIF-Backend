@@ -6,6 +6,8 @@ export async function getSchoolMeal ( school_name: string ) {
     SCHUL_NM: school_name
   })
 
+
+
   const { ATPT_OFCDC_SC_CODE, SD_SCHUL_CODE } = school.schools[0]
 
   const meal = await neis.getMealServiceDietInfo({

@@ -6,5 +6,5 @@ export async function getSchoolInfo ( school_name: string ) {
     SCHUL_NM: school_name
   })
 
-  return school
+  return school.schools[0]
 }
