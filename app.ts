@@ -1,6 +1,6 @@
 import { Application, Router } from "https://deno.land/x/oak@v11.1.0/mod.ts"
-import { getSchoolInfo } from "./data/getSchoolInfo.ts"
-import { getSchoolMeal } from "./data/getMeals.ts"
+import { getSchoolInfo } from "./data/GetSchool.ts"
+import { getSchoolMeal } from "./data/GetMeal.ts"
 
 const app = new Application()
 const router = new Router()

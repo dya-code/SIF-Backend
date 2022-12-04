@@ -17,7 +17,6 @@ export async function getSchoolMeal ( school_name: string ) {
   
   await axiod.get(`https://open.neis.go.kr/hub/mealServiceDietInfo?KEY=d374573af8d34cddaf4e4c250b995c8c&Type=json&pIndex=1&pSize=100&ATPT_OFCDC_SC_CODE=${ATPT_OFCDC_SC_CODE}&SD_SCHUL_CODE=${SD_SCHUL_CODE}&MLSV_YMD=${dateToString("yyyyMMdd")}`)
   .then(resp => {
-    // meal = resp.data.mealServiceDietInfo[1].row[1]
     mealResp = resp.data.mealServiceDietInfo[1].row[1].DDISH_NM.split("<br/>")
   })
   
